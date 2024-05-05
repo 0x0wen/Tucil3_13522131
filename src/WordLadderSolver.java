@@ -11,7 +11,10 @@ public class WordLadderSolver {
         while (!openSet.isEmpty()) {
             String current = openSet.poll();
             if (current.equals(end)) {
-                return reconstructPath(parentMap, current);
+                List<String> reconstructedPath = reconstructPath(parentMap, current);
+                System.out.println("\n--- Results ---");
+                System.out.println("Visited node: " + reconstructedPath.size());
+                return reconstructedPath;
             }
             for (String neighbor : generateNeighbors(current, wordSet)) {
                 if (!parentMap.containsKey(neighbor)) {
@@ -20,6 +23,8 @@ public class WordLadderSolver {
                 }
             }
         }
+        System.out.println("\n--- Results ---");
+        System.out.println("Visited node: " + parentMap.size());
         return Collections.emptyList();
     }
 
@@ -49,6 +54,8 @@ public class WordLadderSolver {
             int currentCost = currentPair.getSecond();
 
             if (currentWord.equals(end)) {
+                System.out.println("\n--- Results ---");
+                System.out.println("Visited node: " + closedSet.size());
                 // Reconstruct and return the path
                 return reconstructPath(parentMap, end);
             }
@@ -64,6 +71,8 @@ public class WordLadderSolver {
                 }
             }
         }
+        System.out.println("\n--- Results ---");
+        System.out.println("Visited node: " + closedSet.size());
         return Collections.emptyList();
     }
     public class Pair<K, V> {
@@ -97,7 +106,6 @@ public class WordLadderSolver {
         Map<String, String> parentMap = new HashMap<>(); 
         Map<String, Integer> gScore = new HashMap<>();
         Map<String, Integer> fScore = new HashMap<>(); 
-    
         PriorityQueue<String> openSet = new PriorityQueue<>(Comparator.comparingInt(fScore::get));
         Set<String> closedSet = new HashSet<>();
         
@@ -108,6 +116,8 @@ public class WordLadderSolver {
         while (!openSet.isEmpty()) {
             String current = openSet.poll();
             if (current.equals(end)) {
+                System.out.println("\n--- Results ---");
+                System.out.println("Visited node: " + closedSet.size());
                 return reconstructPath(parentMap, current);
             }
             closedSet.add(current);
@@ -123,6 +133,8 @@ public class WordLadderSolver {
                 }
             }
         }
+        System.out.println("\n--- Results ---");
+        System.out.println("Visited node: " + closedSet.size());
         return Collections.emptyList();
     }
     

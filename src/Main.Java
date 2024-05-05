@@ -55,7 +55,6 @@ public class Main {
                  continue;
             }
             executionTime = endTime - startTime;
-            System.out.println("\n--- Results ---");
             System.out.println("Execution time: " + executionTime + " milliseconds");
             System.out.println("Path length: " + path.size());
             if (path.isEmpty()) {
@@ -64,7 +63,6 @@ public class Main {
                 System.out.println("Path found: " + path + "");
             }
             System.out.println("--- ****** ---\n");
-            
         }
         
     }
